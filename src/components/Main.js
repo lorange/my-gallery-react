@@ -4,6 +4,7 @@ require('styles/App.scss');
 import React from 'react';
 import ReactDom from 'react-dom';
 import ImgFigure from './ImgFigure';
+import ControllerUnit from './ControllerUnit';
 
 let imageDatas = require('../data/imageDatas.json');
 
@@ -108,7 +109,7 @@ class AppComponent extends React.Component {
       vPosRangeX = vPosRange.x,
 
       imgsArrangeTopArr = [],
-      topImgNum = Math.ceil(Math.random() * 2),//取一个或者不取
+      topImgNum = Math.floor(Math.random() * 2),//取一个或者不取
       topImgSpliceIndex = 0,//用来标记取出的上侧区域的图片在数组中的index
       imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1);//删除数组中centerIndex位置的图片
 
@@ -235,6 +236,10 @@ class AppComponent extends React.Component {
                                  arrange={this.state.imgsArrangeArr[index]}
                                  inverse={this.inverse(index)}
                                  center={this.center(index)}/>);
+
+      controllerUnits.push(<ControllerUnit key={index} arrange={this.state.imgsArrangeArr[index]}
+                                           inverse={this.inverse(index)}
+                                           center={this.center(index)}/>);
     }.bind(this));
 
     return (

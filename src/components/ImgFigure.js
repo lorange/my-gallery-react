@@ -26,8 +26,8 @@ export default class ImgFigure extends React.Component {
     }
     //如果图片旋转角度有值且不为0，添加旋转角度
     if (this.props.arrange.rotate) {
-      ['-moz-', '-ms-', '-webkit-', ''].forEach(function (value) {
-        styleObj[value + 'transform'] = 'rotate(' + this.props.arrange.rotate + 'deg)'
+      ['MozTransform', 'msTransform', 'WebkitTransform', 'transform'].forEach(function (value) {
+        styleObj[value] = 'rotate(' + this.props.arrange.rotate + 'deg)'
       }.bind(this));
     }
 
